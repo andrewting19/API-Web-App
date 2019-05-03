@@ -3,7 +3,6 @@ var fs = require("fs");
 var router = express.Router();
 var Users = require('../models/User');
 var Data = require('../models/data');
-var Villains = require('../models/Villain');
 var userName;
 var userPSWD;
 
@@ -11,7 +10,6 @@ var userPSWD;
 //or main if correct login entered
 router.get('/users/:id/main', function(request, response){
   console.log("GET REQUEST /users/game: "+request.query.player_name+" at "+ new Date());
-  Villains.changeColors();
   //set up data
   var user_data={
     name: request.query.player_name,
@@ -184,7 +182,8 @@ router.put('/user/:id', function (req, res) {
     }
 });
 
-//game handling
+//Shows results of a user after input neighborhood and zipcode,
+//shows # of diagnoses in area and nearest condom distribution center
 router.get('/users/:id/results', function(request, response){
   console.log("GET REQUEST /users/"+request.params.id+"/results"+" at "+ new Date());
   var user_data={
@@ -193,52 +192,10 @@ router.get('/users/:id/results', function(request, response){
     zipcode: request.query.zipcode,
     neighborhood: request.query.neighborhood
   };
-
-  var villainPrevious=fs.readFileSync("data/villainPrevious.txt",'utf8');
-  var userPrevious=fs.readFileSync("data/userPrevious.txt",'utf8');
-
-  if (user_data.weapon=="error"||user_data.villain=="error"){
-    response.redirect("/error");
-  } else{
-    var villainWeapon= "";
-    var arr = Users.handleThrow(user_data.weapon, user_data.villain, villainWeapon, villainPrevious,userPrevious);
-    user_data["result"] = arr[0];
-    user_data["response"] =arr[1];
-
-    Users.getUser(user_data.name, function(user_obj) {
-      user_obj.total =parseInt(user_obj.total)+1
-      user_obj[user_data.weapon]=parseInt(user_obj[user_data.weapon])+ 1
-      switch(user_data["result"]){
-        case "won":
-          user_obj.wins =parseInt(user_obj.wins)+1
-          break;
-        case "lost":
-          user_obj.losses =parseInt(user_obj.losses)+1
-          break;
-      }
-      var user_array = [user_obj.name, user_obj.pswd, user_obj.total, user_obj.wins, user_obj.losses, user_obj.rock, user_obj.paper, user_obj.scissors, user_obj.first, user_obj.last, user_obj.creation, user_obj.update]
-      Villains.getVillain(user_data.villain, function(villain_obj){
-        villain_obj.total =parseInt(villain_obj.total)+1
-        villain_obj[user_data["response"]]=parseInt(villain_obj[user_data["response"]])+1
-        switch(user_data["result"]){
-            case "won":
-              villain_obj.losses = parseInt(villain_obj.losses)+1
-              break;
-            case "lost":
-              villain_obj.wins = parseInt(villain_obj.wins)+1
-              break;
-          }
-        var villain_array = [villain_obj.name, villain_obj.total, villain_obj.wins, villain_obj.losses, villain_obj.rock, villain_obj.paper, villain_obj.scissors]
-        Users.updateUser(user_obj.name, user_array, function(){
-          Villains.updateVillain(villain_obj.name, villain_array, function(){
-            response.status(200);
-            response.setHeader('Content-Type', 'text/html')
-            response.render('results',{page:request.url, user:user_data, title:"results"});
-          });
-        });
-      });
-    });
-  }
+  
+  res.status(200);
+  res.setHeader('Content-Type', 'text/html')
+  res.render('results', {user:user_data});
 });
 
 module.exports = router;
