@@ -1,11 +1,17 @@
+//PRS Showdown
+//Authors: Sadi Gulcelik, Ayesha Ali
+//Date: 1/18/19
+
+//required packages
 var express = require('express');
 var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
-var dat = require(__dirname +'/models/Data');
-/*var all_users = dat.loadGoogle(function(all_users) {
-    console.log(all_users);
-  });*/
+var Developer = require(__dirname + '/models/Developer');
+var dat = require(__dirname + '/models/Data');
+var dev = require(__dirname + '/models/Developer');
+var methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 //set up server
 app.use(express.static('public'));
@@ -13,7 +19,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/images/logo.png'));
 app.use(express.urlencoded());
-//app.use(require('../controllers/user')); //change?
+
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
   //dataJS.log('Server started at '+ new Date()+', on port ' + port+'!');
