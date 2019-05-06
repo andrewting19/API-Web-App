@@ -3,9 +3,9 @@ var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
 var dat = require(__dirname +'/models/Data');
-var all_users = dat.loadGoogle(function(all_users) {
+/*var all_users = dat.loadGoogle(function(all_users) {
     console.log(all_users);
-  });
+  });*/
 
 //set up server
 app.use(express.static('public'));
@@ -13,15 +13,14 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/images/logo.png'));
 app.use(express.urlencoded());
-app.use(require('../controllers/user')); //change?
-
+//app.use(require('../controllers/user')); //change?
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
-  dataJS.log('Server started at '+ new Date()+', on port ' + port+'!');
+  //dataJS.log('Server started at '+ new Date()+', on port ' + port+'!');
 });
 
 app.get('/', function(request, response){
-    dataJS.increment("index");
+    //dataJS.increment("index");
   var user_data={};
   userName = "";
   userPSWD = "";
