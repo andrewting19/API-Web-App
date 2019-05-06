@@ -3,9 +3,9 @@ var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
 var dat = require(__dirname +'/models/Data');
-var all_users = dat.loadGoogle(function(all_users) {
+/*var all_users = dat.loadGoogle(function(all_users) {
     console.log(all_users);
-  });
+  });*/
 
 //set up server
 app.use(express.static('public'));
@@ -20,7 +20,7 @@ app.listen(port, function(){
 });
 
 app.get('/', function(request, response){
-    dataJS.increment("index");
+    //dataJS.increment("index");
   var user_data={};
   userName = "";
   userPSWD = "";

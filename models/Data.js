@@ -5,12 +5,12 @@ var creds = require('../client_secret.json');
 var doc = new GoogleSpreadsheet('17MplezRz9nYIw_jejd42ubSzDVCWdvVEGVGuhL0YQXE');
 // Authenticate with the Google Spreadsheets API.
 
-exports.loadGoogle = function(callback) {
+/*exports.loadGoogle = function(callback) {
   out="";
   doc.useServiceAccountAuth(creds, function (err) {
      doc.getInfo(function(err,info){
         sheet=info.worksheets[1];
-            
+
         sheet.getCells({
         'min-row':1,
         'min-col': 1,
@@ -20,12 +20,12 @@ exports.loadGoogle = function(callback) {
             for(var i=0; i<2;i++){
             out+=cells[i].value;
             }
-            callback(out);  
+            callback(out);
       });
-            
+
       });
   });
-}
+}*/
 /*
 //Updates a row
 exports.updateRow=function(filename, userName, newStuff, callback){
@@ -145,7 +145,7 @@ exports.loadUsage=function(callback){
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getInfo(function(err,info){
         sheet=info.worksheets[2];
-            
+
         sheet.getCells({
         'min-row':2,
         'min-col': 4,
@@ -155,12 +155,12 @@ exports.loadUsage=function(callback){
             for(var i=0; i<7;i++){
             arr[i]=parseInt(cells[i].value);
             }
-            callback(arr);  
+            callback(arr);
       });
-            
+
       });
-         
+
   });
-   
+
 }
 */
