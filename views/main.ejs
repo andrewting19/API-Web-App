@@ -8,10 +8,20 @@
 <body>
   <% include global/header %>
 
-  <div id="About">
-    <h2>About Our Application</h2>
-    <br>
+  <div id="Info">
+    <h2>Please fill out some information about yourself!</h2>
   </div>
+
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Neighborhood
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
 
   <% include global/footer %>
   <script src="scripts/scripts.js"></script>
