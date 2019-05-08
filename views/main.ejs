@@ -12,6 +12,9 @@
     <h2>Please fill out some information about yourself!</h2>
   </div>
 
+
+
+<form action="/results" method="post">
   <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Neighborhood
@@ -22,6 +25,13 @@
     <a class="dropdown-item" href="#">Something else here</a>
   </div>
 </div>
+<div class = "zipcodeInput">
+  Please enter your email: &nbsp;
+    <input type="text" id="zipcode_input" name="zipcode">
+  <button type="submit" id = "zipcode_enter">Submit</button>
+</form>
+
+
 
   <% include global/footer %>
   <script src="scripts/scripts.js"></script>
