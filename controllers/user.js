@@ -5,7 +5,6 @@ var Users = require('../models/User');
 var Data = require('../models/data');
 var userName;
 var userPSWD;
-
 //login request; renders either index if password is wrong
 //or main if correct login entered
 router.get('/users/:id/main', function(request, response){
@@ -192,7 +191,7 @@ router.get('/users/:id/results', function(request, response){
     zipcode: request.query.zipcode,
     neighborhood: request.query.neighborhood
   };
-  
+
   res.status(200);
   res.setHeader('Content-Type', 'text/html')
   res.render('results', {user:user_data});
