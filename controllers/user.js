@@ -5,9 +5,19 @@ var Users = require('../models/User');
 var Data = require('../models/data');
 var userName;
 var userPSWD;
+
+class User{
+  constructor(username,password,zipcode,neighborhood){
+    this.username = username;
+    this.password = password;
+    this.zipcode = zipcode;
+    this.neighborhood = neighborhood;
+  }}
+
+
 //login request; renders either index if password is wrong
 //or main if correct login entered
-router.get('/users/:id/main', function(request, response){
+router.get('/users/main', function(request, response){
   console.log("GET REQUEST /users/game: "+request.query.player_name+" at "+ new Date());
   //set up data
   var user_data={
@@ -33,8 +43,10 @@ router.get('/users/:id/main', function(request, response){
   });
 });
 
+
+
 //request for returning to main page; same as the login request w/o having to log in again
-router.get('/users/main', function(request, response){
+/*router.get('/users/main', function(request, response){
   console.log("GET /playAgain at"+new Date());
   //use the saved username and password which resets when you return to login page
   var user_data={};
@@ -49,7 +61,7 @@ router.get('/users/main', function(request, response){
 
     response.render('main', {page:request.url, user:user_data, title:"playGame"});
   }
-});
+});*/
 
 //request for when user does not choose a valid weapon or villain
 router.get('/error', function(request, response){
