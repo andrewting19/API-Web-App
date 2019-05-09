@@ -5,7 +5,6 @@ var Users = require('../models/Users');
 var Data = require('../models/data');
 var userName;
 var userPSWD;
-
 //login request; renders either index if password is wrong
 //or main if correct login entered
 router.get('/users/:id/main', function(request, response){
