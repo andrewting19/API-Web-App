@@ -35,6 +35,15 @@ app.get('/', function(request, response){
   response.render('index', {page:request.url, user:user_data, title:"Index"});
 });
 
+app.get('/main', function(request, response){
+  var user_data={};
+  userName = "notarealuser";
+  userPSWD = "";
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render('main', {page:request.url, user:user_data, title:"Main"});
+});
+
 app.get('/logout', function(request, response){
   console.log("Get request: /logout");
   res.redirect('/');
