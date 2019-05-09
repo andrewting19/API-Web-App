@@ -26,7 +26,8 @@ app.listen(port, function(){
 });
 
 app.get('/', function(request, response){
-    //dataJS.increment("index");
+  console.log("Get request: /");
+
   var user_data={};
   userName = "";
   userPSWD = "";
@@ -36,12 +37,22 @@ app.get('/', function(request, response){
 });
 
 app.get('/main', function(request, response){
+  console.log("Get request: /main");
+
   var user_data={};
   userName = "notarealuser";
   userPSWD = "";
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render('main', {page:request.url, user:user_data, title:"Main"});
+});
+
+app.get('/about', function(request, response){
+  console.log("Get request: /about");
+
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render('about', {page:request.url, title:"About"});
 });
 
 app.get('/logout', function(request, response){

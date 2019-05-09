@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require("fs");
 var router = express.Router();
-var Users = require('../models/User');
+var Users = require('../models/Users');
 var Data = require('../models/data');
 var userName;
 var userPSWD;
