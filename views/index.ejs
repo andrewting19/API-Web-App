@@ -12,14 +12,13 @@
     <% include global/header %>
 
         <div id="Index">
-
             <h2>Welcome to our application!</h2>
-            <br>
-
             <div id="enter_name">
-                <h2>Welcome to our application! Please sign in or create an account below.</h2>
+                <h2><small>Please sign in or create an account below.</small></h2>
+                <br>
                 <form action="/users/main" method="get">
-                    Please enter your username: &nbsp; <input type="text" id="enter_name_input" name="player_name"> Please enter your password: &nbsp; <input type="password" id="enter_password_input" name="password">
+                    Please enter your username: &nbsp; <input type="text" id="enter_name_input" name="player_name">
+                    Please enter your password: &nbsp; <input type="password" id="enter_password_input" name="password">
                     <button type="submit" id="enter_name_button">Log In</button>
                 </form>
 
