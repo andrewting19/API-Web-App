@@ -12,6 +12,8 @@ var dat = require(__dirname + '/models/Data');
 var dev = require(__dirname + '/models/Developer');
 var methodOverride = require('method-override');
 app.use(methodOverride('_method'));
+app.use(require(__dirname + '/controllers/user'));
+app.use(require(__dirname + '/controllers/data'));
 
 //set up server
 app.use(express.static('public'));

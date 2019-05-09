@@ -22,7 +22,7 @@ router.get('/users/main', function(request, response){
   //set up data
   var user_data={
     name: request.query.player_name,
-    pswd: request.query.pswd
+    pswd: request.query.password
   };
   userName = user_data["name"];
   userPSWD = user_data["pswd"];
