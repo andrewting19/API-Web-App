@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require("fs");
 var router = express.Router();
-var Users = require('../models/User');
+var Users = require('../models/Users');
 var Data = require('../models/data');
 var userName;
 var userPSWD;
@@ -192,7 +192,7 @@ router.get('/users/:id/results', function(request, response){
     zipcode: request.query.zipcode,
     neighborhood: request.query.neighborhood
   };
-  
+
   res.status(200);
   res.setHeader('Content-Type', 'text/html')
   res.render('results', {user:user_data});

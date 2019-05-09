@@ -6,46 +6,25 @@
  </head>
 
 <body>
-  <% include ./global/header %>
+  <% include global/header %>
 
 
   <div id="feedback">
   </div>
 
 
-      <h2>User Information</h2>
+  <div id="About">
 
-      <!--<h4 id = "badFeedback"><%=user.message%></h4>-->
-
-      <%if(user.message =="Email already exists"){%>
-        <div id = "email_error">
-        <h3> The entered email is already in use </h3>
-        <form action="/sign_up" method="get">
-          <button type="submit" id = "results_button">Enter a different email</button>
-        </form>
-        <br>
-      </div>
-      <%}%>
-
-
-
-
-
-      <%if(user.message == "New email"){%>
-        <div id = "email_new">
-        <h3>Here is your information!</h3>
-        <h4>
-          Email: <%=user.email%>
-          <br>
-          API Key: <%=user.key%>
-          <br>
-        </h4>
-      </div>
-      <%}%>
+    <h2>Here are your results!</h2>
+    <br>
+    <form action="/main" method="get">
+      <button type="submit" class="btn btn-success">Return to locator</button>
+    </form>
+  </div>
 
 
   <footer>
-    <% include ./global/footer %>
+    <% include global/footer %>
   </footer>
   <!--  <script src="scripts/scripts.js"></script> -->
  </body>
