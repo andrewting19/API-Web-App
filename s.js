@@ -1,8 +1,3 @@
-//NOT USING FOR API APP
-
-
-
-
 //PRS Showdown
 //Authors: Sadi Gulcelik, Ayesha Ali
 //Date: 1/18/19
@@ -36,7 +31,7 @@ app.use(express.urlencoded());
 
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-    //dataJS.log('Server started at '+ new Date()+', on port ' + port+'!');
+    console.log('Server started at '+ new Date()+', on port ' + port+'!');
 });
 
 app.get('/', function (request, response) {
