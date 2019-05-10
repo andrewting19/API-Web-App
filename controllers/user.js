@@ -32,14 +32,14 @@ router.get('/users/main', function (request, response) {
     Users.getUser(userName, function (user_data) {
         response.status(200);
         response.setHeader('Content-Type', 'text/html')
-        if (user_data["name"] == "") { //if someone accidentally submits login w/o entering anything
-            console.log(user_data["name"] + " <- blank name entered, login failed");
+        if (user_data["username"] == "") { //if someone accidentally submits login w/o entering anything
+            console.log(user_data["username"] + " <- blank name entered, login failed");
             response.render('index', {
                 page: request.url,
                 user: user_data,
                 title: "Index"
             });
-        } else if (user_data.pswd == userPSWD) {
+        } else if (user_data.password == userPSWD) {
             console.log("Successful login, getting main page");
             response.render('main', {
                 page: request.url,

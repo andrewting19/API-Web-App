@@ -2,8 +2,28 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 var doc = new GoogleSpreadsheet('1ib-bwbtW3uQk8QfOQ0SR0EbwszXJefv71Wq4qokLdoM');
 
-exports.both = function (callback) {
-    out = [[]];
+exports.loadAll = function (filename, callback) {
+    var user_data = [];
+    doc.useServiceAccountAuth(creds, function (err) {
+        doc.getRows(filename, function (err, rows) {
+            callback(rows);
+        });
+    });
+}
+exports.getUser = function (username, callback) {
+    var u = {}
+    var all_users = exports.loadAll(1, function (all_users) {
+        for (var i = 0; i < all_users.length; i++) {
+            if (all_users[i].username == username) {
+                u = all_users[i];
+                break;
+            }
+        }
+        callback(u);
+    });
+}
+/*exports.getUser = function (username, callback) {
+    console.log(username);
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getInfo(function (err, info) {
             sheet = info.worksheets[0];
@@ -11,21 +31,33 @@ exports.both = function (callback) {
             sheet.getCells({
                 'min-row': 2,
                 'min-col': 1,
-                'max-col': 2,
+                'max-col': 1,
                 'return-empty': true
             }, function (err, cells) {
-                for (var i = 0; i < cells.length / 2; i += 1) {
-                    out[i] = []
-                    for (var k = 0; k < 2; k += 1) {
-                        out[i].push(cells[2 * i + k].value);
+                for (var i = 0; i < cells.length; i += 1) {
+                    if (cells[i].value == username) {
+                        sheet.getCells({
+                            'min-row': 2 + i,
+                            'max=row': 2 + i,
+                            'min-col': 1,
+                            'max-col': 4,
+                            'return-empty': true
+                        }, function (err, cells) {
+                            var u = {
+                                username: cells[0],
+                                password: cells[1],
+                                zipcode: cells[2],
+                                neighborhood: cells[3]
+                            }
+                            callback(u);
+                        });
                     }
                 }
-                callback(out);
             });
 
         });
     });
-}
+}*/
 isOpen = function (name, callback) {
     var userList = exports.usernames(function (userList) {
         var isopen = true;
@@ -36,21 +68,6 @@ isOpen = function (name, callback) {
             }
         }
         callback(isopen);
-    });
-}
-exports.validateAPIkey = function (apikey, callback) {
-    var apikeyList = exports.apikeys(function (apikeyList) {
-        var verity = false;
-        for (var i = 0; i < apikeyList.length; i++) {
-            key = apikeyList[i];
-            if (key === apikey) {
-                console.log("true");
-                verity = true;
-                break;
-            }
-        }
-        callback(verity);
-
     });
 }
 exports.createUser = function (u, callback) {
