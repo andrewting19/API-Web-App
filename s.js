@@ -28,6 +28,7 @@ app.use(require(__dirname + '/controllers/user'));
 
 //app.use(require(__dirname + '/controllers/data'));
 
+
 //set up server
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
@@ -49,6 +50,7 @@ app.get('/', function (request, response) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render('index', {
+        dirname: __dirname,
         page: request.url,
         user: user_data,
         title: "Index"
