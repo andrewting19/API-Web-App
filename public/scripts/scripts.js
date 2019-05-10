@@ -143,3 +143,12 @@ var diff = startX - mouseX;
 //     }
 //   }
 // }
+
+$(document).ready(function(){
+  $("#hideData").click(function(){
+    $("viewSelection").hide();
+  });
+  $("#viewData").click(function(){
+    $("viewSelection").show();
+  });
+});
