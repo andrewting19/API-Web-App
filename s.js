@@ -76,10 +76,10 @@ app.get('/about', function (request, response) {
 });
 app.get('/results', function (request, response) {
     console.log("Get request: /about");
-    zipcode = req.body.zipcode;
-    neighborhood = req.body.neighborhood;
-    var dist = Data.pdistribution(user_data.zipcode);
-    var cas = Data.pcases(null, user_data.neighborhood, null, null);
+    zipcode = request.body.zipcode;
+    neighborhood = request.body.neighborhood;
+    var dist = data.pdistribution(user_data.zipcode);
+    var cas = data.pcases(null, user_data.neighborhood, null, null);
     Promise.all([dist, cas]).then(function (info) {
         console.log(dist);
         console.log(cas);
