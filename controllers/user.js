@@ -118,7 +118,6 @@ router.post('/users', function (req, res) {
         zipcode: req.body.zipcode,
         neighborhood: req.body.neighborhood
     }
-    console.log(u.name)
     Users.createUser(u, function (result, feedback) {
         if (result) {
             res.redirect('/');
