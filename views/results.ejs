@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Results</title>
-  <link rel="stylesheet" href="/styles/style.css">
- </head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
 
 <body>
-  <% include global/header %>
+    <% include global/header %>
 
 
-  <div id="feedback">
-  </div>
+        <div id="feedback">
+        </div>
 
 
-  <div id="About">
+        <div id="About">
 
-    <h2>Here are your results!</h2>
-    <br>
+            <h2>Here are your results!</h2>
+            <p>
+                <%=thedata%>
+            </p>
+            <br>
 
-    <div id = "summary">
-      <h4>Diagnosis Count: # OF DIAGNOSIS </h4>
-      <!-- maybe we should have a couple if statements here - like if the diagnosis count is greater than a certain number,
+            <div id="summary">
+                <h4>Diagnosis Count: # OF DIAGNOSIS </h4>
+                <!-- maybe we should have a couple if statements here - like if the diagnosis count is greater than a certain number,
       display one summary paragrpah on how careful the user must be.
       and if its lower than that number, have a paragraph saying that they dont need to be too concerned!-->
-      <p> In your area, there have been a lot of HIV diagnoses. As a result, you should prioritize your health and ensure that you are making smart decisions.</p>
-    </div>
+                <p> In your area, there have been a lot of HIV diagnoses. As a result, you should prioritize your health and ensure that you are making smart decisions.</p>
+            </div>
 
-    <div id = "locations">
-      <h4> Here are your three closest condom distrubution centers</h4>
-      <ol>
-        <li> #1 </li>
-        <li> #2 </li>
-        <li> #3 </li>
-      </ol>
-    </div>
+            <div id="locations">
+                <h4> Here are your three closest condom distrubution centers</h4>
+                <ol>
+                    <li> #1 </li>
+                    <li> #2 </li>
+                    <li> #3 </li>
+                </ol>
+            </div>
 
-    <div id = "map">
-      <h4>Use the map below to locate all the condom distrubution centers around the city!</h4>
-    </div>
-    <form action="/users/main" method="get">
-      <button type="submit" class="btn btn-success">Return to locator</button>
-    </form>
-  </div>
+            <div id="map">
+                <h4>Use the map below to locate all the condom distrubution centers around the city!</h4>
+            </div>
+            <form action="/users/main" method="get">
+                <button type="submit" class="btn btn-success">Return to locator</button>
+            </form>
+        </div>
 
 
-  <footer>
-    <% include global/footer %>
-  </footer>
-  <!--  <script src="scripts/scripts.js"></script> -->
- </body>
+        <footer>
+            <% include global/footer %>
+        </footer>
+        <!--  <script src="scripts/scripts.js"></script> -->
+</body>
+
 </html>

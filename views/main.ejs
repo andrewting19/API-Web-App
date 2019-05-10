@@ -1,41 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Main</title>
-  <link rel="stylesheet" href="../styles/style.css">
- </head>
+    <title>Main</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
 
 <body>
-  <% include global/header %>
-
-  <div id="Info">
-    <h2>Please fill out some information about yourself!</h2>
-  </div>
+    <% include global/header %>
+        This is the main page.
 
 
 
-<form action="/user/results" method="get">
-  <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Neighborhood
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Upper East Side</a>
-    <a class="dropdown-item" href="#">Upper West Side</a>
-    <a class="dropdown-item" href="#">Harlem</a>
-  </div>
-  </div>
-
-  <div class = "zipcodeInput">
-    Please enter your zipcode: &nbsp; <input type="text" id="zipcode_input" name="zipcode">
-  </div>
-
-  <button type="submit" id = "info_enter">Submit</button>
-</form>
 
 
 
-  <% include global/footer %>
-  <script src="scripts/scripts.js"></script>
- </body>
+        <% include global/footer %>
+            <script src="scripts/scripts.js"></script>
+</body>
+
 </html>
