@@ -12,7 +12,6 @@ html, body {
 h1 {
     color: #f442d9;
     text-align: center;
-    text-decoration: underline;
 
 }
 
@@ -38,7 +37,7 @@ header {
 
 
 
-div {
+#norm {
     font-family: arial, sans-serif;
     /* margin-top: 50px;
     margin-bottom: 50px;
@@ -50,16 +49,17 @@ div {
 
 }
 
-#map {
-  height:800px;
-  margin: 0;
-  background-color: 0;
+#allresults{
+  font-family: arial, sans-serif;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #ffff99;
+  text-align: center;
+  list-style-position: inside;
 }
 
-
-#photoResults {
-    background-color: white;
-}
 
 .hidden {
     display: none;

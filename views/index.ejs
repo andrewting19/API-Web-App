@@ -5,17 +5,16 @@
     <center>
         <title>Sign Up</title>
     </center>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-    <!-- <link rel="stylesheet" href="<%=dirname%>/public/styles/style.css"> -->
+
 </head>
 
 <body>
     <% include global/header %>
 
-        <div id="Index">
+        <div id="norm">
             <h2>Welcome to our application!</h2>
-            <div id="enter_name">
+            <div id="norm">
                 <h2><small>Please sign in or create an account below.</small></h2>
                 <br>
                 <form action="/users/main" method="get">
@@ -34,8 +33,7 @@
         <style>
       #map {
         height: 800px;
-      }</style>
-      <div id='map'></div>
+      }</style><div id="map"></div>
         <script src="/scripts/map.js"></script>
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrhDK19qy0m3Vfg7CGPwF47c5RgmbmcA0&callback=initMap"
             async defer></script>

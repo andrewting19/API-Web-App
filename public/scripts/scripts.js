@@ -146,9 +146,9 @@ var diff = startX - mouseX;
 
 $(document).ready(function(){
   $("#hideData").click(function(){
-    $("viewSelection").hide();
+    $("allResults").hide();
   });
   $("#viewData").click(function(){
-    $("viewSelection").show();
+    $("allResults").show();
   });
 });
