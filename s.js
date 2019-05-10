@@ -65,7 +65,6 @@ app.get('/', function (request, response) {
 //         title: "Main"
 //     });
 // });
-
 app.get('/about', function (request, response) {
     console.log("Get request: /about");
 
