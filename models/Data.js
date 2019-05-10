@@ -2,7 +2,7 @@ var request = require('request');
 var apikey = "mTiZZDQR";
 var Promise = require('promise');
 exports.pcases = function (year, neighborhood, sex, race) {
-    var rstring = "http://localhost:3042/data?Type=cases&apikey=";
+    var rstring = "http://localhost:3042/data?type=cases&apikey=";
     rstring += apikey;
     if (!(neighborhood == null)) {
         rstring += "&neighborhood=" + neighborhood;
@@ -16,6 +16,7 @@ exports.pcases = function (year, neighborhood, sex, race) {
     if (!(race == null)) {
         rstring += "&race=" + race;
     }
+    console.log(rstring);
     return new Promise(function (resolve, reject) {
         request(rstring, function (error, response, body) {
             if (error) return reject(error);
@@ -28,11 +29,12 @@ exports.pcases = function (year, neighborhood, sex, race) {
     });
 }
 exports.pdistribution = function (zipcode) {
-    var rstring = "http://localhost:3042/data?Type=distribution&apikey=";
+    var rstring = "http://localhost:3042/data?type=distribution&apikey=";
     rstring += apikey;
     if (!(zipcode == null)) {
         rstring += "&zipcode=" + zipcode;
     }
+    console.log(rstring);
     return new Promise(function (resolve, reject) {
         request(rstring, function (error, response, body) {
             if (error) return reject(error);
@@ -59,6 +61,7 @@ exports.cases = function (year, neigborhood, sex, race, callback) {
     if (!(race == null)) {
         rstring += "&race=" + race;
     }
+
     request(rstring, function (err, res, body) {
         data = JSON.parse(body);
         console.log("wait for me");
@@ -76,6 +79,7 @@ exports.distribution = function (zipcode, callback) {
     if (!(zipcode == null)) {
         rstring += "&zipcode=" + zipcode;
     }
+
     request(rstring, function (err, res, body) {
         data = JSON.parse(body);
         if (callback) {
