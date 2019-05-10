@@ -10,7 +10,7 @@ var request = require('request');
 
 router.get('/neighborhoodsearch', function (req, res) {
 
-    var rstring = "localhost:3042/data?type=cases&apikey=";
+    var rstring = "http://localhost:3042/data?Type=cases&apikey=";
     rstring += apikey;
     if (!(req.query.neighborhood == null)) {
         rstring += "&neighborhood=" + req.query.neighborhood;
@@ -38,11 +38,13 @@ router.get('/neighborhoodsearch', function (req, res) {
 })
 
 router.get('/condomsearch', function (req, res) {
-    var rstring = "localhost:3042/data?type=distribution&apikey=";
+    var rstring = "http://localhost:3042/data?Type=distribution&apikey=";
     rstring += apikey;
     if (!(req.query.zipcode == null)) {
         rstring += "&zipcode=" + req.query.zipcode;
     }
+    //rstring += "&zipcode=" + "10128";
+    console.log(rstring)
     request(rstring, function (err, response, body) {
         if (!err) {
             var data = JSON.parse(body);
@@ -54,6 +56,7 @@ router.get('/condomsearch', function (req, res) {
                 title: "Result"
             });
         } else {
+            console.log(err);
             res.redirect('/');
         }
     });
