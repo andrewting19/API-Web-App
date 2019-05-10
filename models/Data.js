@@ -2,7 +2,7 @@ var request = require('request');
 var apikey = "mTiZZDQR";
 var Promise = require('promise');
 exports.pcases = function (year, neighborhood, sex, race) {
-    var rstring = "http://radiant-fjord-19703/data?type=cases&apikey=";
+    var rstring = "https://radiant-fjord-19703/data?type=cases&apikey=";
     rstring += apikey;
     if (!(neighborhood == null)) {
         rstring += "&neighborhood=" + neighborhood;
@@ -29,7 +29,7 @@ exports.pcases = function (year, neighborhood, sex, race) {
     });
 }
 exports.pdistribution = function (zipcode) {
-    var rstring = "http://radiant-fjord-19703/data?type=distribution&apikey=";
+    var rstring = "https://radiant-fjord-19703/data?type=distribution&apikey=";
     rstring += apikey;
     if (!(zipcode == null)) {
         rstring += "&zipcode=" + zipcode;
@@ -47,7 +47,7 @@ exports.pdistribution = function (zipcode) {
     });
 }
 exports.cases = function (year, neigborhood, sex, race, callback) {
-    var rstring = "http://radiant-fjord-19703/data?type=cases&apikey=";
+    var rstring = "https://radiant-fjord-19703/data?type=cases&apikey=";
     rstring += apikey;
     if (!(neigborhood == null)) {
         rstring += "&neighborhood=" + neighborhood;
@@ -74,7 +74,7 @@ exports.cases = function (year, neigborhood, sex, race, callback) {
 }
 
 exports.distribution = function (zipcode, callback) {
-    var rstring = "http://radiant-fjord-19703/data?type=distribution&apikey=";
+    var rstring = "https://radiant-fjord-19703/data?type=distribution&apikey=";
     rstring += apikey;
     if (!(zipcode == null)) {
         rstring += "&zipcode=" + zipcode;
