@@ -14,8 +14,12 @@
     "jsdom": "^15.0.0",
     "method-override": "^3.0.0",
     "node": "^10.13.0",
+<<<<<<< HEAD
     "popper": "^1.0.1",
     "popper.js": "^1.15.0",
+=======
+    "request": "^2.88.0",
+>>>>>>> 0fbe8abef3ee20cc350c3f89977be651401105a2
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},

@@ -22,24 +22,24 @@ class User {
 router.get('/users/main', function (request, response) {
     console.log("GET REQUEST /users/main/" + request.query.player_name + " at " + new Date());
     var user_data = {
-      name: request.query.player_name,
-      password: request.query.password
+        name: request.query.player_name,
+        password: request.query.password
     };
     userName = user_data.name;
-    userPSWD=user_data.password;
+    userPSWD = user_data.password;
     //response.render('main', {user:user_data});
     //set up data
     Users.getUser(userName, function (user_data) {
         response.status(200);
         response.setHeader('Content-Type', 'text/html')
-        if (user_data["name"] == "") { //if someone accidentally submits login w/o entering anything
-            console.log(user_data["name"]+" <- blank name entered, login failed");
+        if (user_data["username"] == "") { //if someone accidentally submits login w/o entering anything
+            console.log(user_data["username"] + " <- blank name entered, login failed");
             response.render('index', {
                 page: request.url,
                 user: user_data,
                 title: "Index"
             });
-        } else if (user_data.pswd == userPSWD) {
+        } else if (user_data.password == userPSWD) {
             console.log("Successful login, getting main page");
             response.render('main', {
                 page: request.url,
@@ -113,19 +113,15 @@ router.get('/user/new', function (req, res) {
 router.post('/users', function (req, res) {
     console.log('POST Request- /Users' + " at " + new Date());
     var u = {
-        name: req.body.name,
-        pswd: req.body.password,
-        first: req.body.zipcode,
-        last: req.body.neighborhood
-    }
-    var feedback = {
-        failure: 0
+        username: req.body.name,
+        password: req.body.password,
+        zipcode: req.body.zipcode,
+        neighborhood: req.body.neighborhood
     }
     Users.createUser(u, function (result, feedback) {
         if (result) {
             res.redirect('/');
         } else {
-            var u;
             advice["failure"] = feedback;
             res.status(200);
             res.setHeader('Content-Type', 'text/html')
