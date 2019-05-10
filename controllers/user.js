@@ -113,7 +113,7 @@ router.get('/user/new', function (req, res) {
 router.post('/users', function (req, res) {
     console.log('POST Request- /Users' + " at " + new Date());
     var u = {
-        name: req.body.name,
+        username: req.body.name,
         password: req.body.password,
         zipcode: req.body.zipcode,
         neighborhood: req.body.neighborhood
