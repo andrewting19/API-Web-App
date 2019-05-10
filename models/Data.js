@@ -1,6 +1,6 @@
 var request = require('request');
 var apikey = "mTiZZDQR";
-
+var Promise = require('promise');
 exports.pcases = function (year, neighborhood, sex, race) {
     var rstring = "http://localhost:3042/data?Type=cases&apikey=";
     rstring += apikey;

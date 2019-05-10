@@ -45,8 +45,6 @@ router.get('/users/main', function (request, response) {
             var cas = Data.pcases(null, user_data.neighborhood, null, null);
 
             Promise.all([dist, cas]).then(function (info) {
-                console.log(dist);
-                console.log(cas);
                 response.render('main', {
                     page: request.url,
                     info: info,
