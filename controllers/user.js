@@ -1,9 +1,9 @@
 var express = require('express');
 var fs = require("fs");
 var router = express.Router();
-
+var Promise = require('promise');
 var Users = require('../models/Users');
-var Data = require('../models/data');
+var Data = require('../models/Data');
 var userName;
 var userPSWD;
 
@@ -40,14 +40,29 @@ router.get('/users/main', function (request, response) {
                 title: "Index"
             });
         } else if (user_data.password == userPSWD) {
-            console.log("Successful login, getting main page");
-            response.render('main', {
-                page: request.url,
-                user: user_data,
-                title: "Main"
+
+            var dist = Data.pdistribution(user_data.zipcode);
+            var cas = Data.pcases(null, user_data.neighborhood, null, null);
+
+            Promise.all([dist, cas]).then(function (info) {
+                console.log(dist);
+                console.log(cas);
+                response.render('main', {
+                    page: request.url,
+                    info: info,
+                    title: "Main"
+                });
             });
+            /*Data.distribution(user_data.zipcode, function (data) {
+                response.render('main', {
+                    page: request.url,
+                    thedata: data,
+                    title: "Main"
+                });
+            });*/
+
         } else {
-            console.log("Incorrect username entered, login failed");
+            console.log("Incorrect password or username entered, login failed");
             user_data["failure"] = 4;
             userName = "";
             userPSWD = "";
@@ -60,25 +75,6 @@ router.get('/users/main', function (request, response) {
     });
 });
 
-
-
-//request for returning to main page; same as the login request w/o having to log in again
-/*router.get('/users/main', function(request, response){
-  console.log("GET /playAgain at"+new Date());
-  //use the saved username and password which resets when you return to login page
-  var user_data={};
-  user_data["name"] = userName;
-  user_data["pswd"] = userPSWD;
-  // var csv_data = console.loadCSV("data/users.csv");
-  //if the saved username is empty than return to index page
-  if (user_data["name"] == "") {//if someone accidentally submits login w/o entering anything
-
-    response.render('index', {page:request.url, user:user_data, title:"Index"});
-  } else {
-
-    response.render('main', {page:request.url, user:user_data, title:"playGame"});
-  }
-});*/
 
 //request for when user does not choose a valid weapon or villain
 router.get('/error', function (request, response) {

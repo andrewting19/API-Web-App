@@ -1,32 +1,34 @@
 {
-  "name": "prssadiayesha",
+  "name": "api-web-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "mvc_server.js",
+  "description": "Sadi Anna and Andrew's app",
+  "main": "s.js",
   "dependencies": {
+    "abbrev": "^1.1.1",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.3.1",
     "ejs": "^2.6.1",
+    "expres": "0.0.5",
     "express": "^4.16.4",
-    "fs": "0.0.1-security",
     "google-spreadsheet": "^2.0.7",
-    "jquery": "^3.4.1",
-    "jsdom": "^15.0.0",
     "method-override": "^3.0.0",
-    "node": "^10.13.0",
-<<<<<<< HEAD
-    "popper": "^1.0.1",
-    "popper.js": "^1.15.0",
-=======
-    "request": "^2.88.0",
->>>>>>> 0fbe8abef3ee20cc350c3f89977be651401105a2
+    "promise": "^8.0.3",
+    "readable-stream": "^2.3.6",
+    "safe-buffer": "^5.1.2",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node mvc_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "start": "node server.js"
   },
-  "author": "ayesha ali and sadi gulcelik",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewting19/API-Web-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewting19/API-Web-App/issues"
+  },
+  "homepage": "https://github.com/andrewting19/API-Web-App#readme"
 }

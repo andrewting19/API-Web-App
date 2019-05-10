@@ -82,12 +82,18 @@ app.get('/about', function (request, response) {
 });
 app.get('/results', function (request, response) {
     console.log("Get request: /about");
-
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.render('results', {
-        page: request.url,
-        title: "Resu"
+    zipcode = req.body.zipcode;
+    neighborhood = req.body.neighborhood;
+    var dist = Data.pdistribution(user_data.zipcode);
+    var cas = Data.pcases(null, user_data.neighborhood, null, null);
+    Promise.all([dist, cas]).then(function (info) {
+        console.log(dist);
+        console.log(cas);
+        response.render('results', {
+            page: request.url,
+            info: info,
+            title: "Result"
+        });
     });
 });
 

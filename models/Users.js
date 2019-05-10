@@ -22,42 +22,6 @@ exports.getUser = function (username, callback) {
         callback(u);
     });
 }
-/*exports.getUser = function (username, callback) {
-    console.log(username);
-    doc.useServiceAccountAuth(creds, function (err) {
-        doc.getInfo(function (err, info) {
-            sheet = info.worksheets[0];
-
-            sheet.getCells({
-                'min-row': 2,
-                'min-col': 1,
-                'max-col': 1,
-                'return-empty': true
-            }, function (err, cells) {
-                for (var i = 0; i < cells.length; i += 1) {
-                    if (cells[i].value == username) {
-                        sheet.getCells({
-                            'min-row': 2 + i,
-                            'max=row': 2 + i,
-                            'min-col': 1,
-                            'max-col': 4,
-                            'return-empty': true
-                        }, function (err, cells) {
-                            var u = {
-                                username: cells[0],
-                                password: cells[1],
-                                zipcode: cells[2],
-                                neighborhood: cells[3]
-                            }
-                            callback(u);
-                        });
-                    }
-                }
-            });
-
-        });
-    });
-}*/
 isOpen = function (name, callback) {
     var userList = exports.usernames(function (userList) {
         var isopen = true;
@@ -96,27 +60,6 @@ exports.usernames = function (callback) {
                 'min-row': 2,
                 'min-col': 1,
                 'max-col': 1,
-                'return-empty': true
-            }, function (err, cells) {
-                for (var i = 0; i < cells.length; i += 1) {
-                    out.push(cells[i].value)
-                }
-                callback(out);
-            });
-
-        });
-    });
-}
-exports.apikeys = function (callback) {
-    out = [];
-    doc.useServiceAccountAuth(creds, function (err) {
-        doc.getInfo(function (err, info) {
-            sheet = info.worksheets[0];
-
-            sheet.getCells({
-                'min-row': 2,
-                'min-col': 2,
-                'max-col': 2,
                 'return-empty': true
             }, function (err, cells) {
                 for (var i = 0; i < cells.length; i += 1) {
