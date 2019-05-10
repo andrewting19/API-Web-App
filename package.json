@@ -19,7 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "mocha",
-    "start": "node server.js"
+    "start": "node s.js"
   },
   "repository": {
     "type": "git",
