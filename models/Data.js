@@ -47,7 +47,7 @@ exports.pdistribution = function (zipcode) {
     });
 }
 exports.cases = function (year, neigborhood, sex, race, callback) {
-    var rstring = "http://radiant-fjord-19703/data?Type=cases&apikey=";
+    var rstring = "http://radiant-fjord-19703/data?type=cases&apikey=";
     rstring += apikey;
     if (!(neigborhood == null)) {
         rstring += "&neighborhood=" + neighborhood;
@@ -74,7 +74,7 @@ exports.cases = function (year, neigborhood, sex, race, callback) {
 }
 
 exports.distribution = function (zipcode, callback) {
-    var rstring = "http://radiant-fjord-19703/data?Type=distribution&apikey=";
+    var rstring = "http://radiant-fjord-19703/data?type=distribution&apikey=";
     rstring += apikey;
     if (!(zipcode == null)) {
         rstring += "&zipcode=" + zipcode;
@@ -91,15 +91,24 @@ exports.distribution = function (zipcode, callback) {
     });
 }
 
-exports.putMarkers = function(array, address) {
-  var mapA;
-  var center=address; //address = {lat, lng};
-  var zoomedIn=15; //experimental value
-  var markerArray = {test: "useless"};
-  function initMap() {
-    mapA = new google.maps.Map(document.getElementById('map'), {zoom: zoomedIn, center: address});
-    for(var i=0; i<array.length; i++) {
-      markerArray["marker"+(i+1)]=new google.maps.Marker({position: array[i], map: mapA});
+exports.putMarkers = function (array, address) {
+    var mapA;
+    var center = address; //address = {lat, lng};
+    var zoomedIn = 15; //experimental value
+    var markerArray = {
+        test: "useless"
+    };
+
+    function initMap() {
+        mapA = new google.maps.Map(document.getElementById('map'), {
+            zoom: zoomedIn,
+            center: address
+        });
+        for (var i = 0; i < array.length; i++) {
+            markerArray["marker" + (i + 1)] = new google.maps.Marker({
+                position: array[i],
+                map: mapA
+            });
+        }
     }
-  }
 };
