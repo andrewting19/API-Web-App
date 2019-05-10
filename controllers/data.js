@@ -43,7 +43,7 @@ router.get('/condomsearch', function (req, res) {
     if (!(req.query.zipcode == null)) {
         rstring += "&zipcode=" + req.query.zipcode;
     }
-    //rstring += "&zipcode=" + "10128";
+    rstring += "&zipcode=" + "10128";
     console.log(rstring)
     request(rstring, function (err, response, body) {
         if (!err) {
