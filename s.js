@@ -1,5 +1,3 @@
-
-
 //NOT USING FOR API APP
 
 
@@ -24,9 +22,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(methodOverride('_method'));
+app.use(require(__dirname + '/controllers/data'));
 app.use(require(__dirname + '/controllers/user'));
 
-//app.use(require(__dirname + '/controllers/data'));
 
 //set up server
 app.use(express.static('public'));
@@ -78,6 +76,16 @@ app.get('/about', function (request, response) {
     response.render('about', {
         page: request.url,
         title: "About"
+    });
+});
+app.get('/results', function (request, response) {
+    console.log("Get request: /about");
+
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render('results', {
+        page: request.url,
+        title: "Resu"
     });
 });
 
