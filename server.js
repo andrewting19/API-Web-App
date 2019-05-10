@@ -3,19 +3,18 @@
 //Date: 5/10/19
 
 //required packages
-var am = require('./models/Data');
-var vm = require('./models/Developer');
-var um = require('./models/Users');
-
 var express = require('express');
 var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
 var Developer = require(__dirname + '/models/Developer');
-var dat = require(__dirname + '/models/Data');
-var dev = require(__dirname + '/models/Developer');
+var Data = require(__dirname + '/models/Data');
+var Users = require(__dirname+'/models/Users');
+var userRoutes = require(__dirname+'/controllers/user');
+var dataRoutes = require(__dirname+'/controllers/data');
 var methodOverride = require('method-override');
 app.use(methodOverride('_method'));
+app.use(require(__dirname + '/controllers/user'));
 
 //set up server
 app.use(express.static('public'));

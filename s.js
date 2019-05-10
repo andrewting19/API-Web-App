@@ -1,3 +1,10 @@
+
+
+//NOT USING FOR API APP
+
+
+
+
 //PRS Showdown
 //Authors: Sadi Gulcelik, Ayesha Ali
 //Date: 1/18/19
@@ -43,20 +50,20 @@ app.get('/', function (request, response) {
     });
 });
 
-app.get('/main', function (request, response) {
-    console.log("Get request: /main");
-
-    var user_data = {};
-    userName = "notarealuser";
-    userPSWD = "";
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.render('main', {
-        page: request.url,
-        user: user_data,
-        title: "Main"
-    });
-});
+// app.get('/main', function (request, response) {
+//     console.log("Get request: /main");
+//
+//     var user_data = {};
+//     userName = "notarealuser";
+//     userPSWD = "";
+//     response.status(200);
+//     response.setHeader('Content-Type', 'text/html')
+//     response.render('main', {
+//         page: request.url,
+//         user: user_data,
+//         title: "Main"
+//     });
+// });
 
 app.get('/about', function (request, response) {
     console.log("Get request: /about");

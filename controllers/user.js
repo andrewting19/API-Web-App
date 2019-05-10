@@ -19,31 +19,34 @@ class User {
 //login request; renders either index if password is wrong
 //or main if correct login entered
 router.get('/users/main', function (request, response) {
-    console.log("GET REQUEST /users/game: " + request.query.player_name + " at " + new Date());
-    //set up data
+    console.log("GET REQUEST /users/main/" + request.query.player_name + " at " + new Date());
     var user_data = {
-        name: request.query.player_name,
-        pswd: request.query.password
+      name: request.query.player_name,
+      password: request.query.password
     };
-    userName = user_data["name"];
-    userPSWD = user_data["pswd"];
+    userName = user_data.name;
+    userPSWD=user_data.password;
+    //response.render('main', {user:user_data});
+    //set up data
     Users.getUser(userName, function (user_data) {
         response.status(200);
         response.setHeader('Content-Type', 'text/html')
         if (user_data["name"] == "") { //if someone accidentally submits login w/o entering anything
-            console.log(user_data["name"]);
+            console.log(user_data["name"]+" <- blank name entered, login failed");
             response.render('index', {
                 page: request.url,
                 user: user_data,
                 title: "Index"
             });
         } else if (user_data.pswd == userPSWD) {
+            console.log("Successful login, getting main page");
             response.render('main', {
                 page: request.url,
                 user: user_data,
-                title: "index"
+                title: "Main"
             });
         } else {
+            console.log("Incorrect username entered, login failed");
             user_data["failure"] = 4;
             userName = "";
             userPSWD = "";
