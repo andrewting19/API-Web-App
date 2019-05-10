@@ -10,10 +10,13 @@
     "expres": "0.0.5",
     "express": "^4.16.4",
     "google-spreadsheet": "^2.0.7",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.0.0",
     "method-override": "^3.0.0",
     "multiple-select": "^1.2.3",
     "promise": "^8.0.3",
     "readable-stream": "^2.3.6",
+    "request": "^2.88.0",
     "safe-buffer": "^5.1.2",
     "serve-favicon": "^2.5.0"
   },
