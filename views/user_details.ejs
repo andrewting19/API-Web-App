@@ -3,7 +3,7 @@
 
 <head>
     <title>User Details</title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
@@ -17,35 +17,26 @@
                             <%}%>
             </h2>
             <form action="<%if(user==null){%>/users<%}else{%>/user/<%=user.name%>?_method=PUT<%}%>" method="post">
-                Username: <input type="text" id="enter_username" name="player_name" value="<%if (user!=null){%><%=user.name%><%} else {%><%}%>"><br> Password: <input type="text" id="enter_password" name="password" value="<%if (user!=null){%><%=user.password%><%} else {%><%}%>"><br>
+                Username: <input type="text" id="enter_username" name="player_name" value="<%if (user!=null){%><%=user.name%><%} else {%><%}%>"><br style="line-height: 40px;"> Password: <input type="text" id="enter_password" name="password" value="<%if (user!=null){%><%=user.password%><%} else {%><%}%>"><br style="line-height: 40px;"> Zip code: <input list="zipcode">
+                <datalist id="zipcode">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+                </datalist> <br style="line-height: 20px;"><br style="line-height: 20px;"> Neighborhood:
+                <input list="neighborhood">
+                <datalist id="neighborhood">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+                </datalist><br style="line-height: 20px;">
+                <br style="line-height: 20px;">
                 <button type="submit" id="enter_name_button"><%if(user==null){%>Create Account<%}else{%>Modify Account<%}%></button>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">About</a>
-                        <a href="#base">Base</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#custom">Custom</a>
-                        <a href="#support">Support</a>
-                        <a href="#tools">Tools</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">About</a>
-                        <a href="#base">Base</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#custom">Custom</a>
-                        <a href="#support">Support</a>
-                        <a href="#tools">Tools</a>
-                    </div>
-                </div>
             </form>
+            <br>
             <% if (user!=null) {%>
                 <form action="/user/<%=user.name%>?_method=DELETE" method="post">
                     <input type="submit" value="Delete User">
@@ -60,7 +51,7 @@
         <footer>
             <% include global/footer %>
         </footer>
-        <script src="scripts/scripts.js"></script>
+        <script src="../scripts/scripts.js"></script>
 </body>
 
 </html>
