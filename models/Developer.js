@@ -1,6 +1,6 @@
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
-var dataJS = require(__dirname +'/data');
+var dat = require(__dirname+'/Data');
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
 var doc = new GoogleSpreadsheet('1DVgMG20OgfLR0leaJvzOiHDxp19EoyGKHTJxUCnxoX0');
 // Authenticate with the Google Spreadsheets API.
@@ -132,7 +132,7 @@ exports.loadUsage=function(callback){
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getInfo(function(err,info){
         sheet=info.worksheets[2];
-            
+
         sheet.getCells({
         'min-row':2,
         'min-col': 4,
@@ -142,11 +142,11 @@ exports.loadUsage=function(callback){
             for(var i=0; i<7;i++){
             arr[i]=parseInt(cells[i].value);
             }
-            callback(arr);  
+            callback(arr);
       });
-            
+
       });
-         
+
   });
-   
+
 }

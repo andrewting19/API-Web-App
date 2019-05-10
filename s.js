@@ -7,7 +7,6 @@ var express = require('express');
 var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
-var Developer = require(__dirname + '/models/Developer');
 var dat = require(__dirname + '/models/Data');
 var dev = require(__dirname + '/models/Developer');
 var methodOverride = require('method-override');
