@@ -6,14 +6,15 @@ html, body {
   height:100%;
   margin:0;
   padding:0;
+  background-color: #ffff99;
 }
 
 h1 {
     color: #f442d9;
     text-align: center;
-    text-decoration: underline;
 
 }
+
 
 h4 {
     color: #f442d9;
@@ -36,26 +37,29 @@ header {
 
 
 
-div {
+#norm {
     font-family: arial, sans-serif;
-    margin-top: 50px;
+    /* margin-top: 50px;
     margin-bottom: 50px;
     margin-right: 50px;
-    margin-left: 50px;
+    margin-left: 50px; */
     background-color: #ffff99;
     text-align: center;
     list-style-position: inside;
 
 }
 
-#map {
-  height:100%;
+#allresults{
+  font-family: arial, sans-serif;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #ffff99;
+  text-align: center;
+  list-style-position: inside;
 }
 
-
-#photoResults {
-    background-color: white;
-}
 
 .hidden {
     display: none;
@@ -64,45 +68,6 @@ div {
 .visible {
     display: block;
 }
-
-#nameFeedbackGood {
-    background-color: #ffffff;
-    color: #ff99cc;
-}
-
-#nameFeedbackBad,
-#choiceFeedbackBad {
-    background-color: #ffffff;
-    color: #ff0000;
-}
-
-#game_results {
-    background-color: #ffffff;
-}
-
-#Computer_Picture_Results {
-    margin-top: 10px;
-    margin-left: 150;
-    margin-right: 140px;
-}
-
-#Player_Picture_Results {
-    margin-top: 10px;
-    margin-left: 150px;
-    margin-right: 0px;
-
-}
-
-#resultsText {
-    text-align: center;
-}
-
-#statsTable {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
 td,
 th {
     border: 1px solid #ffffff;

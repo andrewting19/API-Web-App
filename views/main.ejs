@@ -8,17 +8,43 @@
 
 <body>
     <% include global/header %>
+
+
+
+
+    <div id = "norm">
+      <h4><small> Select other zip codes and neighborhoods to view a wider array of data</small></h4>
         <form action="/results">
             Zip code: <input name="zipcode" list="zipcode">
             <datalist id="zipcode">
                 <option value="10001"><option value="10002"><option value="10003"><option value="10004"><option value="10005"><option value="10009"><option value="10010"><option value="10011"><option value="10012"><option value="10013"><option value="10014"><option value="10016"><option value="10017"><option value="10018"><option value="10019"><option value="10022"><option value="10024"><option value="10025"><option value="10026"><option value="10027"><option value="10028"><option value="10029"><option value="10030"><option value="10031"><option value="10032"><option value="10033"><option value="10035"><option value="10036"><option value="10037"><option value="10038"><option value="10040"><option value="10065"><option value="10128"><option value="10301"><option value="10310"><option value="10451"><option value="10452"><option value="10453"><option value="10454"><option value="10456"><option value="10457"><option value="10458"><option value="10459"><option value="10474"><option value="11101"><option value="11103"><option value="11106"><option value="11201"><option value="11203"><option value="11205"><option value="11206"><option value="11207"><option value="11208"><option value="11211"><option value="11212"><option value="11213"><option value="11215"><option value="11216"><option value="11217"><option value="11218"><option value="11221"><option value="11224"><option value="11231"><option value="11232"><option value="11237"><option value="11238"><option value="11249"><option value="11354"><option value="11368"><option value="11370"><option value="11372"><option value="11373"><option value="11375"><option value="11377"><option value="11385"><option value="11423"><option value="11432"><option value="11435">
-                </datalist> <br style="line-height: 20px;"><br style="line-height: 20px;"> Neighborhood:
+                </datalist>
+
+                Zip code: <input name="zipcode" list="zipcode">
+                <datalist id="zipcode">
+                    <option value="10001"><option value="10002"><option value="10003"><option value="10004"><option value="10005"><option value="10009"><option value="10010"><option value="10011"><option value="10012"><option value="10013"><option value="10014"><option value="10016"><option value="10017"><option value="10018"><option value="10019"><option value="10022"><option value="10024"><option value="10025"><option value="10026"><option value="10027"><option value="10028"><option value="10029"><option value="10030"><option value="10031"><option value="10032"><option value="10033"><option value="10035"><option value="10036"><option value="10037"><option value="10038"><option value="10040"><option value="10065"><option value="10128"><option value="10301"><option value="10310"><option value="10451"><option value="10452"><option value="10453"><option value="10454"><option value="10456"><option value="10457"><option value="10458"><option value="10459"><option value="10474"><option value="11101"><option value="11103"><option value="11106"><option value="11201"><option value="11203"><option value="11205"><option value="11206"><option value="11207"><option value="11208"><option value="11211"><option value="11212"><option value="11213"><option value="11215"><option value="11216"><option value="11217"><option value="11218"><option value="11221"><option value="11224"><option value="11231"><option value="11232"><option value="11237"><option value="11238"><option value="11249"><option value="11354"><option value="11368"><option value="11370"><option value="11372"><option value="11373"><option value="11375"><option value="11377"><option value="11385"><option value="11423"><option value="11432"><option value="11435">
+                    </datalist>
+
+                 Neighborhood:
             <input name="neighborhood" list="neighborhood">
             <datalist id="neighborhood">
                 <option value="neighborhood"><option value="All"><option value="Bayside - Little Neck"><option value="Bedford Stuyvesant - Crown Heights"><option value="Bensonhurst - Bay Ridge"><option value="Borough Park"><option value="Canarsie - Flatlands"><option value="Central Harlem - Morningside Heights"><option value="Chelsea - Clinton"><option value="Coney Island - Sheepshead Bay"><option value="Crotona - Tremont"><option value="Downtown - Heights - Park Slope"><option value="East Flatbush - Flatbush"><option value="East Harlem"><option value="East New York"><option value="Flushing - Clearview"><option value="Fordham - Bronx Park"><option value="Fresh Meadows"><option value="Gramercy Park - Murray Hill"><option value="Greenpoint"><option value="Greenwich Village - SoHo"><option value="High Bridge - Morrisania"><option value="Hunts Point - Mott Haven"><option value="Jamaica"><option value="Kingsbridge - Riverdale"><option value="Long Island City - Astoria"><option value="Lower Manhattan"><option value="Northeast Bronx"><option value="Pelham - Throgs Neck"><option value="Port Richmond"><option value="Ridgewood - Forest Hills"><option value="Rockaway"><option value="South Beach - Tottenville"><option value="Southeast Queens"><option value="Southwest Queens"><option value="Stapleton - St. George"><option value="Sunset Park"><option value="Union Square - Lower Eastside"><option value="Unknown"><option value="Upper Eastside"><option value="Upper Westside"><option value="Washington Heights - Inwood"><option value="West Queens"><option value="Williamsburg - Bushwick"><option value="Willowbrook">
                 </datalist>
+                 Neighborhood:
+                <input name="neighborhood" list="neighborhood">
+                <datalist id="neighborhood">
+                    <option value="neighborhood"><option value="All"><option value="Bayside - Little Neck"><option value="Bedford Stuyvesant - Crown Heights"><option value="Bensonhurst - Bay Ridge"><option value="Borough Park"><option value="Canarsie - Flatlands"><option value="Central Harlem - Morningside Heights"><option value="Chelsea - Clinton"><option value="Coney Island - Sheepshead Bay"><option value="Crotona - Tremont"><option value="Downtown - Heights - Park Slope"><option value="East Flatbush - Flatbush"><option value="East Harlem"><option value="East New York"><option value="Flushing - Clearview"><option value="Fordham - Bronx Park"><option value="Fresh Meadows"><option value="Gramercy Park - Murray Hill"><option value="Greenpoint"><option value="Greenwich Village - SoHo"><option value="High Bridge - Morrisania"><option value="Hunts Point - Mott Haven"><option value="Jamaica"><option value="Kingsbridge - Riverdale"><option value="Long Island City - Astoria"><option value="Lower Manhattan"><option value="Northeast Bronx"><option value="Pelham - Throgs Neck"><option value="Port Richmond"><option value="Ridgewood - Forest Hills"><option value="Rockaway"><option value="South Beach - Tottenville"><option value="Southeast Queens"><option value="Southwest Queens"><option value="Stapleton - St. George"><option value="Sunset Park"><option value="Union Square - Lower Eastside"><option value="Unknown"><option value="Upper Eastside"><option value="Upper Westside"><option value="Washington Heights - Inwood"><option value="West Queens"><option value="Williamsburg - Bushwick"><option value="Willowbrook">
+                    </datalist>
+<br>
+            <button type="submit" id="enterSearch">Search</button>
+
         </form>
-        <table>
+      </div>
+
+
+      <div id = "norm">
+        <center><table>
+          <h4><u>Here are your closest condom distribution centers! </u></h4>
             <tr>
                 <th class="top_row ">Zip code</th>
                 <th class="top_row ">Address</th>
@@ -32,8 +58,15 @@
                         <%}%>
                 </tr>
                 <%}%>
-        </table>
-        <table>
+        </table></center>
+        </div>
+
+        <button type="button" id = "viewData" class="btn btn-outline-warning">View My Data</button>
+        <button type="button" id = "hideData" class="btn btn-outline-warning">Hide My Data</button>
+
+        <div id = "allResults">
+          <h4><u>Find below your results personalized by your zipcode and neighborhood!</u></h4>
+        <center><table id = "resultsTable">
             <tr>
                 <th class="top_row ">Year</th>
                 <th class="top_row ">Neighborhood</th>
@@ -52,7 +85,8 @@
                 </tr>
 
                 <%}%>
-        </table>
+        </table></center>
+      </div>
         <div id='map'></div>
 
         <% include global/footer %>
