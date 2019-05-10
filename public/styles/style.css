@@ -36,7 +36,7 @@ header {
 
 
 
-div {
+#norm {
     font-family: arial, sans-serif;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -48,9 +48,7 @@ div {
 
 }
 
-#map {
-  height:100%;
-}
+
 
 
 .hidden {
