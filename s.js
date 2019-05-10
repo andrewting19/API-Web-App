@@ -18,6 +18,11 @@ var Developer = require(__dirname + '/models/Developer');
 var dat = require(__dirname + '/models/Data');
 var dev = require(__dirname + '/models/Developer');
 var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(methodOverride('_method'));
 app.use(require(__dirname + '/controllers/user'));
 
