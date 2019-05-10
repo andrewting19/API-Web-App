@@ -48,7 +48,16 @@ header {
 
 }
 
-
+#allresults{
+  font-family: arial, sans-serif;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #ffff99;
+  text-align: center;
+  list-style-position: inside;
+}
 
 
 .hidden {

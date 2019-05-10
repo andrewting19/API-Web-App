@@ -9,12 +9,10 @@
 <body>
     <% include global/header %>
 
-    
-    <button type="button" id = "viewData" class="btn btn-outline-warning">View My Data</button>
-    <button type="button" id = "hideData" class="btn btn-outline-warning">Hide My Data</button>
 
 
-    <div id = "viewSelection">
+
+    <div id = "norm">
       <h4><small> Select other zip codes and neighborhoods to view a wider array of data</small></h4>
         <form action="/results">
             Zip code: <input name="zipcode" list="zipcode">
@@ -44,7 +42,7 @@
       </div>
 
 
-      <div id = "distributionCenter">
+      <div id = "norm">
         <center><table>
           <h4><u>Here are your closest condom distribution centers! </u></h4>
             <tr>
@@ -62,6 +60,9 @@
                 <%}%>
         </table></center>
         </div>
+
+        <button type="button" id = "viewData" class="btn btn-outline-warning">View My Data</button>
+        <button type="button" id = "hideData" class="btn btn-outline-warning">Hide My Data</button>
 
         <div id = "allResults">
           <h4><u>Find below your results personalized by your zipcode and neighborhood!</u></h4>
