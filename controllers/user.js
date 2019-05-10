@@ -111,9 +111,9 @@ router.post('/users', function (req, res) {
     console.log('POST Request- /Users' + " at " + new Date());
     var u = {
         name: req.body.name,
-        pswd: req.body.password,
-        first: req.body.zipcode,
-        last: req.body.neighborhood
+        password: req.body.password,
+        zipcode: req.body.zipcode,
+        neighborhood: req.body.neighborhood
     }
     var feedback = {
         failure: 0
@@ -122,7 +122,6 @@ router.post('/users', function (req, res) {
         if (result) {
             res.redirect('/');
         } else {
-            var u;
             advice["failure"] = feedback;
             res.status(200);
             res.setHeader('Content-Type', 'text/html')
