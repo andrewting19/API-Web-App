@@ -1,6 +1,7 @@
 var express = require('express');
 var fs = require("fs");
 var router = express.Router();
+
 var Users = require('../models/Users');
 var Data = require('../models/data');
 var userName;
@@ -106,28 +107,28 @@ router.get('/user/new', function (req, res) {
 });
 
 //request for when user creates an account; creates a user, returns to login index
-router.post('/user', function (req, res) {
+router.post('/users', function (req, res) {
     console.log('POST Request- /Users' + " at " + new Date());
     var u = {
-        name: req.body.player_name,
-        pswd: req.body.pswd,
-        first: req.body.first,
-        last: req.body.last
+        name: req.body.name,
+        pswd: req.body.password,
+        first: req.body.zipcode,
+        last: req.body.neighborhood
     }
     var feedback = {
         failure: 0
     }
-    Users.createUser(u.name, u.pswd, u.first, u.last, function (result, feedbackN) {
+    Users.createUser(u, function (result, feedback) {
         if (result) {
             res.redirect('/');
         } else {
             var u;
-            feedback["failure"] = feedbackN;
+            advice["failure"] = feedback;
             res.status(200);
             res.setHeader('Content-Type', 'text/html')
             res.render('user_details', {
                 user: u,
-                feedback: feedback,
+                feedback: advice,
                 title: "create"
             });
         }
