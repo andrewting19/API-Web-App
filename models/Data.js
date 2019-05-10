@@ -90,3 +90,16 @@ exports.distribution = function (zipcode, callback) {
 
     });
 }
+
+exports.putMarkers = function(array, address) {
+  var mapA;
+  var center=address; //address = {lat, lng};
+  var zoomedIn=15; //experimental value
+  var markerArray = {test: "useless"};
+  function initMap() {
+    mapA = new google.maps.Map(document.getElementById('map'), {zoom: zoomedIn, center: address});
+    for(var i=0; i<array.length; i++) {
+      markerArray["marker"+(i+1)]=new google.maps.Marker({position: array[i], map: mapA});
+    }
+  }
+};
