@@ -30,7 +30,7 @@ isOpen = function (name, callback) {
     var userList = exports.usernames(function (userList) {
         var isopen = true;
         for (var i = 0; i < userList.length; i += 1) {
-            if (userList[i] == email) {
+            if (userList[i] == name) {
                 isopen = false;
 
             }

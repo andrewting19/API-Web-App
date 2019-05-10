@@ -22,18 +22,18 @@ class User {
 router.get('/users/main', function (request, response) {
     console.log("GET REQUEST /users/main/" + request.query.player_name + " at " + new Date());
     var user_data = {
-      name: request.query.player_name,
-      password: request.query.password
+        name: request.query.player_name,
+        password: request.query.password
     };
     userName = user_data.name;
-    userPSWD=user_data.password;
+    userPSWD = user_data.password;
     //response.render('main', {user:user_data});
     //set up data
     Users.getUser(userName, function (user_data) {
         response.status(200);
         response.setHeader('Content-Type', 'text/html')
         if (user_data["name"] == "") { //if someone accidentally submits login w/o entering anything
-            console.log(user_data["name"]+" <- blank name entered, login failed");
+            console.log(user_data["name"] + " <- blank name entered, login failed");
             response.render('index', {
                 page: request.url,
                 user: user_data,
@@ -118,9 +118,7 @@ router.post('/users', function (req, res) {
         zipcode: req.body.zipcode,
         neighborhood: req.body.neighborhood
     }
-    var feedback = {
-        failure: 0
-    }
+    console.log(u.name)
     Users.createUser(u, function (result, feedback) {
         if (result) {
             res.redirect('/');
