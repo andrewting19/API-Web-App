@@ -168,16 +168,28 @@ router.post('/users', function (req, res) {
         zipcode: req.body.zipcode,
         neighborhood: req.body.neighborhood,
     }
+    if(u.username==""||u.password==""||u.zipcode==""||u.neighborhood=="") {
+      console.log("Form left blank, returning to user details");
+      res.status(200);
+      res.setHeader('Content-Type', 'text/html')
+      res.render('user_details', {user:u, feedback:"Please fill out all the forms to create a user.", title:"Create"})
+      return false;
+    }
     Users.createUser(u, function (result, feedback) {
         if (result) {
-            res.redirect('/');
+          res.status(200);
+          res.setHeader('Content-Type', 'text/html')
+          res.render('index', {
+              user: u,
+              feedback: "New user created successfully!",
+              title: "Index"
+          });
         } else {
-            advice["failure"] = feedback;
             res.status(200);
             res.setHeader('Content-Type', 'text/html')
             res.render('user_details', {
                 user: u,
-                feedback: advice,
+                feedback: "User already exists. Pick a different username!",
                 title: "create"
             });
         }
