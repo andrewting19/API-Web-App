@@ -9,6 +9,8 @@
 <body>
     <% include global/header %>
 
+    <div id="feedback"><%=feedback%></div>
+
         <div id="norm">
             <h2>
                 <%if (user==null){%> Create Account
@@ -26,7 +28,7 @@
                 <option value="neighborhood"><option value="All"><option value="Bayside - Little Neck"><option value="Bedford Stuyvesant - Crown Heights"><option value="Bensonhurst - Bay Ridge"><option value="Borough Park"><option value="Canarsie - Flatlands"><option value="Central Harlem - Morningside Heights"><option value="Chelsea - Clinton"><option value="Coney Island - Sheepshead Bay"><option value="Crotona - Tremont"><option value="Downtown - Heights - Park Slope"><option value="East Flatbush - Flatbush"><option value="East Harlem"><option value="East New York"><option value="Flushing - Clearview"><option value="Fordham - Bronx Park"><option value="Fresh Meadows"><option value="Gramercy Park - Murray Hill"><option value="Greenpoint"><option value="Greenwich Village - SoHo"><option value="High Bridge - Morrisania"><option value="Hunts Point - Mott Haven"><option value="Jamaica"><option value="Kingsbridge - Riverdale"><option value="Long Island City - Astoria"><option value="Lower Manhattan"><option value="Northeast Bronx"><option value="Pelham - Throgs Neck"><option value="Port Richmond"><option value="Ridgewood - Forest Hills"><option value="Rockaway"><option value="South Beach - Tottenville"><option value="Southeast Queens"><option value="Southwest Queens"><option value="Stapleton - St. George"><option value="Sunset Park"><option value="Union Square - Lower Eastside"><option value="Unknown"><option value="Upper Eastside"><option value="Upper Westside"><option value="Washington Heights - Inwood"><option value="West Queens"><option value="Williamsburg - Bushwick"><option value="Willowbrook">
                 </datalist><br style="line-height: 20px;">
                 <br style="line-height: 20px;">
-                <button type="submit" id="enter_name_button"><%if(user==null){%>Create Account<%}else{%>Modify Account<%}%></button>
+                <button class="btn btn-outline-warning" type="submit" id="enter_name_button"><%if(user==null){%>Create Account<%}else{%>Modify Account<%}%></button>
             </form>
             <br>
             <% if (user!=null) {%>

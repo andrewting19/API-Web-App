@@ -150,14 +150,11 @@ router.get('/users/results', function (request, response) {
 router.get('/user/new', function (req, res) {
     console.log("GET REQUEST /users/new at" + new Date());
     var u;
-    var feedback = {
-        failure: 0
-    }
     res.status(200);
     res.setHeader('Content-Type', 'text/html')
     res.render('user_details', {
         user: u,
-        feedback: feedback,
+        feedback: "Empty forms just waiting to be filled! Sign-up page loaded!",
         title: "create"
     });
 });
