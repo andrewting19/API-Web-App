@@ -55,7 +55,8 @@ app.get('/', function (request, response) {
         dirname: __dirname,
         page: request.url,
         user: user_data,
-        title: "Index"
+        title: "Index",
+        feedback: "Webpage is loaded and ready to rumble!"
     });
 });
 

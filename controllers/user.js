@@ -64,7 +64,8 @@ router.get('/users/main', function (request, response) {
             response.render('index', {
                 page: request.url,
                 user: user_data,
-                title: "Index"
+                title: "Index",
+                feedback: "Please enter a username to continue."
             });
         } else if (user_data.password == userPSWD) {
             /*var previous;
@@ -100,7 +101,8 @@ router.get('/users/main', function (request, response) {
             response.render('index', {
                 page: request.url,
                 user: user_data,
-                title: "Index"
+                title: "Index",
+                feedback: "Username or password was incorrect. Please enter a correct username and password to continue."
             });
         }
     });
