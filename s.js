@@ -51,7 +51,7 @@ app.get('/', function (request, response) {
     userPSWD = "";
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render('test', {
+    response.render('index', {
         dirname: __dirname,
         page: request.url,
         user: user_data,
