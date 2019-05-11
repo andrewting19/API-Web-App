@@ -2,24 +2,51 @@ var express = require('express');
 var fs = require("fs");
 var router = express.Router();
 var Promise = require('promise');
+var http = require('http');
+var url = require('url');
 var Users = require('../models/Users');
-var Data = require('../models/Data');
+var dat = require('../models/Data');
 var userName;
 var userPSWD;
 
-class User {
-    constructor(username, password, zipcode, neighborhood) {
-        this.username = username;
-        this.password = password;
-        this.zipcode = zipcode;
-        this.neighborhood = neighborhood;
-    }
-}
-
-
 //login request; renders either index if password is wrong
 //or main if correct login entered
+router.get('/users/backtomain', function (request, response) {
+    if (userName == null) {
+        response.redirect('/');
+    } else {
+        Users.getUser(userName, function (user_data) {
+            response.status(200);
+            response.setHeader('Content-Type', 'text/html')
+            /*var previous;
+            var previousData;
+            try {
+                previous = fs.readFileSync(__dirname"/data/" + user_data.username + ".txt ", 'utf8');
+                var prevd = previous.split(',')[0].split("~");
+                var prevc = previous.split(',')[1].split("~");
+                previousData = ("You previously looked at the distribution centers at zip code(s)" + prevd.join(", ") + "and the statistics in " + prevd.join(", ") + ".");
+            } catch (err) {
+                previous = "#";
+                previousData = ("No previous view is recorded. ")
+            }*/
+            var dist = dat.pdistribution(user_data.zipcode);
+            var cas = dat.pcases(null, user_data.neighborhood, null, null);
+            Promise.all([dist, cas]).then(function (info) {
+                response.render('main', {
+                    page: request.url,
+                    info: info,
+                    user: user_data,
+                    //previous: previous,
+                    //previousData: previousData,
+                    title: "Main"
+                });
+            });
+        });
+    }
+
+});
 router.get('/users/main', function (request, response) {
+
     console.log("GET REQUEST /users/main/" + request.query.player_name + " at " + new Date());
     var user_data = {
         name: request.query.player_name,
@@ -40,24 +67,30 @@ router.get('/users/main', function (request, response) {
                 title: "Index"
             });
         } else if (user_data.password == userPSWD) {
-
-            var dist = Data.pdistribution(user_data.zipcode);
-            var cas = Data.pcases(null, user_data.neighborhood, null, null);
+            /*var previous;
+            var previousData;
+            try {
+                previous = fs.readFileSync("../data/" + user_data.username + ".txt ", 'utf8');
+                var prevd = previous.split(',')[0].split("~");
+                var prevc = previous.split(',')[1].split("~");
+                previousData = ("You previously looked at the distribution centers at zip code(s)" + prevd.join(", ") + "and the statistics in " + prevd.join(", ") + ".");
+            } catch (err) {
+                previous = "#";
+                previousData = ("No previous view is recorded. ")
+            }*/
+            var dist = dat.pdistribution(user_data.zipcode);
+            var cas = dat.pcases(null, user_data.neighborhood, null, null);
 
             Promise.all([dist, cas]).then(function (info) {
                 response.render('main', {
                     page: request.url,
                     info: info,
+                    user: user_data,
+                    //previous: previous,
+                    //previousData: previousData,
                     title: "Main"
                 });
             });
-            /*Data.distribution(user_data.zipcode, function (data) {
-                response.render('main', {
-                    page: request.url,
-                    thedata: data,
-                    title: "Main"
-                });
-            });*/
 
         } else {
             console.log("Incorrect password or username entered, login failed");
@@ -74,16 +107,40 @@ router.get('/users/main', function (request, response) {
 });
 
 
-//request for when user does not choose a valid weapon or villain
-router.get('/error', function (request, response) {
-    //use the saved username and password which resets when you return to login page
-    var user_data = {};
-    user_data["name"] = userName;
-    user_data["pswd"] = userPSWD;
-    response.render('game', {
-        page: request.url,
-        user: user_data,
-        title: "error"
+router.get('/users/results', function (request, response) {
+    console.log("Get request: /results");
+
+    var queryData = url.parse(request.url, true).query;
+
+    var dist;
+    var cas;
+    text = "";
+    if (queryData.zipcode == null) {
+        dist = []
+    } else if (Array.isArray(queryData.zipcode)) {
+        text += queryData.zipcode.join('~')
+        dist = dat.pdistribution(queryData.zipcode.join('~'));
+    } else {
+        text += text += queryData.zipcode;
+        dist = dat.pdistribution(queryData.zipcode);
+    }
+    text += ",";
+    if (queryData.neighborhood == null) {
+        cas = []
+    } else if (Array.isArray(queryData.neighborhood)) {
+        text += queryData.neighborhood.join('~')
+        cas = dat.pcases(null, queryData.neighborhood.join('~'), null, null);
+    } else {
+        text += queryData.neighborhood;
+        cas = dat.pcases(null, queryData.neighborhood, null, null);
+    }
+    //fs.writeFileSync("../data/" + userName + ".txt", text, 'utf8')
+    Promise.all([dist, cas]).then(function (info) {
+        response.render('results', {
+            page: request.url,
+            info: info,
+            title: "Result"
+        });
     });
 });
 
@@ -110,7 +167,7 @@ router.post('/users', function (req, res) {
         username: req.body.name,
         password: req.body.password,
         zipcode: req.body.zipcode,
-        neighborhood: req.body.neighborhood
+        neighborhood: req.body.neighborhood,
     }
     Users.createUser(u, function (result, feedback) {
         if (result) {
@@ -127,7 +184,7 @@ router.post('/users', function (req, res) {
         }
     });
 });
-
+/*
 //request for when user chooses to edit account after logging in; shows edit form
 router.get('/user/:id/edit', function (req, res) {
     console.log("GET REQUEST /users/" + req.params.id + "/edit" + " at " + new Date());
@@ -155,6 +212,7 @@ router.delete('/user/:id', function (req, res) {
         res.redirect('/');
     });
 })
+
 
 //request for when user updates account; updates user with :id
 router.put('/user/:id', function (req, res) {
@@ -231,23 +289,6 @@ router.put('/user/:id', function (req, res) {
         });
     }
 });
-
-//Shows results of a user after input neighborhood and zipcode,
-//shows # of diagnoses in area and nearest condom distribution center
-router.get('/users/:id/results', function (request, response) {
-    console.log("GET REQUEST /users/" + request.params.id + "/results" + " at " + new Date());
-    var user_data = {
-        name: request.params.id,
-        pswd: request.params.pswd,
-        zipcode: request.query.zipcode,
-        neighborhood: request.query.neighborhood
-    };
-
-    res.status(200);
-    res.setHeader('Content-Type', 'text/html')
-    res.render('results', {
-        user: user_data
-    });
-});
+*/
 
 module.exports = router;

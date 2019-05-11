@@ -8,7 +8,6 @@ var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
 var dat = require(__dirname + '/models/Data');
-var dev = require(__dirname + '/models/Developer');
 var http = require('http');
 var url = require('url');
 var methodOverride = require('method-override');
@@ -42,6 +41,7 @@ var port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log('Server started at ' + new Date() + ', on port ' + port + '!');
 });
+
 
 app.get('/', function (request, response) {
     console.log("Get request: /");
@@ -83,23 +83,9 @@ app.get('/about', function (request, response) {
         title: "About"
     });
 });
-app.get('/results', function (request, response) {
-    console.log("Get request: /results");
-    var queryData = url.parse(request.url, true).query;
-    var dist = dat.pdistribution(queryData.zipcode.join('~'));
-    var cas = dat.pcases(null, queryData.neighborhood.join('~'), null, null);
-    Promise.all([dist, cas]).then(function (info) {
-        console.log(dist);
-        console.log(cas);
-        response.render('results', {
-            page: request.url,
-            info: info,
-            title: "Result"
-        });
-    });
-});
+
 
 app.get('/logout', function (request, response) {
     console.log("Get request: /logout");
-    res.redirect('/');
+    response.redirect('/');
 });

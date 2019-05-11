@@ -3,7 +3,6 @@ var fs = require("fs");
 var router = express.Router();
 
 var dat = require('../models/Data');
-var Developer = require('../models/Developer.js')
 //var jobJS = require('../models/jobprogram');
 
 var request = require('request');
