@@ -2,8 +2,8 @@ var request = require('request');
 var apikey = "mTiZZDQR";
 var Promise = require('promise');
 exports.pcases = function (year, neighborhood, sex, race) {
-    //var rstring = "https://radiant-fjord-19703.herokuapp.com/data?type=cases&apikey=";
-    var rstring = "http://localhost:3042/data?type=cases&apikey=";
+    var rstring = "https://radiant-fjord-19703.herokuapp.com/data?type=cases&apikey=";
+    //var rstring = "http://localhost:3042/data?type=cases&apikey=";
     rstring += apikey;
     if (!(neighborhood == null)) {
         rstring += "&neighborhood=" + neighborhood;
@@ -30,8 +30,8 @@ exports.pcases = function (year, neighborhood, sex, race) {
     });
 }
 exports.pdistribution = function (zipcode) {
-    //var rstring = "https://radiant-fjord-19703.herokuapp.com/data?type=distribution&apikey=";
-    var rstring = "http://localhost:3042/data?type=distribution&apikey=";
+    var rstring = "https://radiant-fjord-19703.herokuapp.com/data?type=distribution&apikey=";
+    //var rstring = "http://localhost:3042/data?type=distribution&apikey=";
     rstring += apikey;
     if (!(zipcode == null)) {
         rstring += "&zipcode=" + zipcode;
