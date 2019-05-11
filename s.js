@@ -21,6 +21,14 @@ app.use(methodOverride('_method'));
 app.use(require(__dirname + '/controllers/data'));
 app.use(require(__dirname + '/controllers/user'));
 
+var jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+
+var $ = jQuery = require('jquery')(window);
+
 
 
 //set up server
@@ -43,7 +51,7 @@ app.get('/', function (request, response) {
     userPSWD = "";
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render('index', {
+    response.render('test', {
         dirname: __dirname,
         page: request.url,
         user: user_data,

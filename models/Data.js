@@ -91,7 +91,7 @@ exports.distribution = function (zipcode, callback) {
     });
 }
 
-exports.putMarkers = function (array, address) {
+exports.mapWithMarkers = function (array, address) {
     var mapA;
     var center = address; //address = {lat, lng};
     var zoomedIn = 15; //experimental value

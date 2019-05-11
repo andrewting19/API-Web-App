@@ -47,4 +47,8 @@ router.get('/condomsearch', function (req, res) {
         }
     });
 });
+
+router.get('/getCords',function(req,res) {
+  
+});
 module.exports = router;
